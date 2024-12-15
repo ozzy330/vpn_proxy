@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir -p ./.wireguard
 # Genera llave privada y publica
 wg genkey | tee ./.wireguard/priv.key | wg pubkey > ./.wireguard/pub.key
 
