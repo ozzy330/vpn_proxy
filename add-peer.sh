@@ -1,3 +1,5 @@
+#!/bin/sh
+
 server_pub_key=$(cat ./.wireguard/pub.key)
 # IP publica del
 endpoint=""
@@ -17,6 +19,7 @@ echo \
 [Peer]
 # Client PUB Key
 PublicKey = $1
+# IPs where can serve traffic
 AllowedIPs = $2
 " >> ./.wireguard/server.conf
 
@@ -27,7 +30,7 @@ echo \
 [Peer]
 PublicKey = $server_pub_key
 Endpoint = $endpoint:51820
-# IPs ruted through the server
-AllowedIPs = <allowed_ip_client>
+# IPs that can connect to this peer (server IP for example)
+AllowedIPs = <allowed_CIDRs>
 PersistentKeepalive = 25
 "

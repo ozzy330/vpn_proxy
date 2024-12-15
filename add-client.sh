@@ -6,7 +6,6 @@ wg genkey | tee ./.wireguard/priv.key | wg pubkey > ./.wireguard/pub.key
 
 priv_key=$(cat ./.wireguard/priv.key)
 
-
 if [ -z "$1" ]; then
     echo "Usage: $0 <client_CIDR>"
     exit 1
