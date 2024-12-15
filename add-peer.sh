@@ -27,6 +27,7 @@ echo \
 [Peer]
 PublicKey = $server_pub_key
 Endpoint = $endpoint:51820
+# IPs ruted through the server
 AllowedIPs = <allowed_ip_client>
 PersistentKeepalive = 25
 "

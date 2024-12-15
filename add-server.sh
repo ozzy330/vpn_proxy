@@ -5,13 +5,21 @@ mkdir -p ./.wireguard
 wg genkey | tee ./.wireguard/priv.key | wg pubkey > ./.wireguard/pub.key
 
 priv_key=$(cat ./.wireguard/priv.key)
-address=10.0.0.1/24
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <server_CIDR>"
+    exit 1
+fi
 
 echo \
 "
 [Interface]
-Address = $address
+Address = $1
 ListenPort = 51820
 # Server PRIV Key
 PrivateKey = $priv_key
 " > ./.wireguard/server.conf
+
+chmod 600 ./.wireguard/server.conf
+chmod 600 ./.wireguard/priv.key
+chmod 644 ./.wireguard/pub.key

@@ -18,4 +18,8 @@ echo \
 Address = $1
 # Client PRIV Key
 PrivateKey = $priv_key
-" > ./.wireguard/server.conf
+" > ./.wireguard/client.conf
+
+chmod 600 ./.wireguard/client.conf
+chmod 600 ./.wireguard/priv.key
+chmod 644 ./.wireguard/pub.key
