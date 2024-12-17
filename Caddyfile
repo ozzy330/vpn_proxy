@@ -1,0 +1,16 @@
+{                                                                                                                                                    
+  email <email_for_acm>
+}
+http://example-domain.com {
+  handle_path /hola {
+    respond "Hola :D"
+  }
+  root * /root/path/to/static/files
+  @exists file
+  handle @exists {
+    file_server
+  }
+  handle {
+    reverse_proxy <server-ip>:<server-port>
+  }
+}
